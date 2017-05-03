@@ -55,18 +55,34 @@ struct MyCalculatorBrain {
                 }
             case .unaryOperation(let function):
                 if accumulator != nil {
-                    
-                    description = symbol + String(describing: accumulator!)
-                    accumulator = function (accumulator!)
-                    
+                    if description == String(describing: accumulator!)  {
+                        description = symbol + String(describing: accumulator!)
+                        accumulator = function (accumulator!)
+                    } else {
+                        description = symbol + "(" + description + ")"
+                        accumulator = function (accumulator!)
+                    }
                 }
             case .binaryOperation(let function):
                 if accumulator != nil {
-                    description = String(describing: accumulator!) + symbol
-                    pendingBinaryOperation = PendingBinaryOperation(function: function, firstOperand:accumulator!)
-                    accumulator = nil
-                    resultIsPending = true
                     
+                    if !resultIsPending {
+                        if description == String(describing: accumulator!) {
+                            description = String(describing: accumulator!) + symbol
+                        } else {
+                            description += symbol
+                        }
+                        pendingBinaryOperation = PendingBinaryOperation(function: function, firstOperand:accumulator!)
+                        accumulator = nil
+                        resultIsPending = true
+                    
+                } else {
+                        description += symbol
+                        performPendingBinaryOperation()
+                        pendingBinaryOperation = PendingBinaryOperation(function: function, firstOperand:accumulator!)
+                        accumulator = nil
+
+                    }
                 }
             case .equals:
                 
