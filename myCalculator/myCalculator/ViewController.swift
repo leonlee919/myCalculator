@@ -13,7 +13,6 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var display: UILabel!
    
-    
     @IBOutlet weak var descriptionDisplay: UILabel!
     
     var userIsInTheMiddleOfTyping = false
@@ -36,6 +35,7 @@ class ViewController: UIViewController {
                 }
             }
             
+            
         } else {
             if digit != "." {
                 display.text = digit
@@ -45,9 +45,10 @@ class ViewController: UIViewController {
                 userEnteredAPoint = true
             }
             
+            
             userIsInTheMiddleOfTyping = true
         }
-        
+        //descriptionDisplay.text = display.text
     }
     
 
@@ -60,25 +61,18 @@ class ViewController: UIViewController {
         }
     }
   
-    /*
     
-    var descriptionValue: String {
-        get {
-            return String(descriptionUI.text!)!
-        }
-        set {
-            descriptionUI.text = description
-        }
-    }
-*/
     
     private var brain = MyCalculatorBrain()
     
+    
+   
     
     @IBAction func performOperation(_ sender: UIButton) {
         
         if userIsInTheMiddleOfTyping {
             brain.setOperand(displayValue)
+            
         }
         userIsInTheMiddleOfTyping = false
         userEnteredAPoint = false
@@ -87,11 +81,13 @@ class ViewController: UIViewController {
         }
         if let result = brain.result {
             displayValue = result
+           
+            descriptionDisplay.text = brain.descriptionText + "="
+        } else {
+            descriptionDisplay.text = brain.descriptionText + "..."
         }
         
-        if brain.descriptionText != nil {
-            descriptionDisplay.text = brain.descriptionText
-        }
+      
         
     }
     
