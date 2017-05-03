@@ -13,7 +13,8 @@ struct MyCalculatorBrain {
     
     private var accumulator : Double?
     private var resultIsPending = false
-    private var description : String?
+    private var description = " "
+ 
     
     private enum Operation {
         case constant(Double)
@@ -47,29 +48,39 @@ struct MyCalculatorBrain {
             switch operation {
             case .constant(let value):
                 accumulator = value
-                description? += symbol
+                if symbol == "C" {
+                    description = " "
+                } else {
+                    description = symbol
+                }
             case .unaryOperation(let function):
                 if accumulator != nil {
+                    
+                    description = symbol + String(describing: accumulator!)
                     accumulator = function (accumulator!)
-                    description? += symbol
+                    
                 }
             case .binaryOperation(let function):
                 if accumulator != nil {
+                    description = String(describing: accumulator!) + symbol
                     pendingBinaryOperation = PendingBinaryOperation(function: function, firstOperand:accumulator!)
                     accumulator = nil
                     resultIsPending = true
-                    description? += symbol
+                    
                 }
             case .equals:
+                
                 performPendingBinaryOperation()
                 resultIsPending = false
-                description? += symbol
+                
             }
         }
     }
     
     private mutating func performPendingBinaryOperation() {
         if pendingBinaryOperation != nil && accumulator != nil {
+            
+            
             accumulator = pendingBinaryOperation!.perform(with: accumulator!)
             pendingBinaryOperation = nil
         }
@@ -89,7 +100,13 @@ struct MyCalculatorBrain {
 
     mutating func setOperand(_ operand: Double) {
         accumulator = operand
-        description? += String(operand)
+        description += String(describing: accumulator!)
+        //if resultIsPending {
+        //    description = description.replacingOccurrences(of: "...", with: String(describing: accumulator!))
+        //}
+        //else {
+        //    description += String(accumulator!)
+        //}
     }
     
     var result: Double? {
@@ -98,7 +115,7 @@ struct MyCalculatorBrain {
         }
     }
     
-    var descriptionText: String? {
+    var descriptionText: String! {
     
         get{
             return description
