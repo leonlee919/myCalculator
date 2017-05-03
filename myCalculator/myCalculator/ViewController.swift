@@ -27,6 +27,7 @@ class ViewController: UIViewController {
             let textCurrentlyInDisplay = display.text!
             if digit == "." && userEnteredAPoint {
                 display.text = textCurrentlyInDisplay
+                
             }
             else {
                 display.text = textCurrentlyInDisplay + digit
@@ -48,7 +49,10 @@ class ViewController: UIViewController {
             
             userIsInTheMiddleOfTyping = true
         }
-        //descriptionDisplay.text = display.text
+        if !brain.calcIsPending {
+            descriptionDisplay.text = display.text
+            
+        }
     }
     
 
