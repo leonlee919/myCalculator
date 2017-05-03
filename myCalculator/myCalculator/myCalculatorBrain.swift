@@ -122,6 +122,13 @@ struct MyCalculatorBrain {
         }
     }
     
+    var calcIsPending: Bool! {
+        
+        get {
+            return resultIsPending
+        }
+    }
+    
     
  
 
