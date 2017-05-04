@@ -12,7 +12,7 @@
 		2F3914C61E8D6EE7002A81A6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F3914C41E8D6EE7002A81A6 /* Main.storyboard */; };
 		2F3914C81E8D6EE7002A81A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F3914C71E8D6EE7002A81A6 /* Assets.xcassets */; };
 		2F3914CB1E8D6EE7002A81A6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F3914C91E8D6EE7002A81A6 /* LaunchScreen.storyboard */; };
-		2F3914D41E8D7CB3002A81A6 /* myCalculatorBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3914D31E8D7CB3002A81A6 /* myCalculatorBrain.swift */; };
+		2F3914D41E8D7CB3002A81A6 /* MyCalculatorBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3914D31E8D7CB3002A81A6 /* MyCalculatorBrain.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,7 +23,7 @@
 		2F3914C71E8D6EE7002A81A6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2F3914CA1E8D6EE7002A81A6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2F3914CC1E8D6EE7002A81A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2F3914D31E8D7CB3002A81A6 /* myCalculatorBrain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = myCalculatorBrain.swift; sourceTree = "<group>"; };
+		2F3914D31E8D7CB3002A81A6 /* MyCalculatorBrain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCalculatorBrain.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,7 +59,7 @@
 				2F3914C21E8D6EE7002A81A6 /* ViewController.swift */,
 				2F3914C41E8D6EE7002A81A6 /* Main.storyboard */,
 				2F3914D21E8D6F8C002A81A6 /* Supporting files */,
-				2F3914D31E8D7CB3002A81A6 /* myCalculatorBrain.swift */,
+				2F3914D31E8D7CB3002A81A6 /* MyCalculatorBrain.swift */,
 			);
 			path = myCalculator;
 			sourceTree = "<group>";
@@ -149,7 +149,7 @@
 			files = (
 				2F3914C31E8D6EE7002A81A6 /* ViewController.swift in Sources */,
 				2F3914C11E8D6EE7002A81A6 /* AppDelegate.swift in Sources */,
-				2F3914D41E8D7CB3002A81A6 /* myCalculatorBrain.swift in Sources */,
+				2F3914D41E8D7CB3002A81A6 /* MyCalculatorBrain.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,6 +311,7 @@
 				2F3914D11E8D6EE7002A81A6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
