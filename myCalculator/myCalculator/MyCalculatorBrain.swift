@@ -59,7 +59,14 @@ struct MyCalculatorBrain {
                         description = symbol + String(describing: accumulator!)
                         accumulator = function (accumulator!)
                     } else {
-                        description = symbol + "(" + description + ")"
+                        
+                        if !resultIsPending {
+                            description = symbol + "(" + description + ")"
+                            
+                        }
+                        else {
+                            description = description.replacingOccurrences(of: String(describing: accumulator!), with: symbol + String(describing: accumulator!))
+                        }
                         accumulator = function (accumulator!)
                     }
                 }
@@ -75,13 +82,13 @@ struct MyCalculatorBrain {
                         pendingBinaryOperation = PendingBinaryOperation(function: function, firstOperand:accumulator!)
                         accumulator = nil
                         resultIsPending = true
-                    
-                } else {
+                        
+                    } else {
                         description += symbol
                         performPendingBinaryOperation()
                         pendingBinaryOperation = PendingBinaryOperation(function: function, firstOperand:accumulator!)
                         accumulator = nil
-
+                        
                     }
                 }
             case .equals:
@@ -89,9 +96,9 @@ struct MyCalculatorBrain {
                 performPendingBinaryOperation()
                 resultIsPending = false
                 
+                }
             }
         }
-    }
     
     private mutating func performPendingBinaryOperation() {
         if pendingBinaryOperation != nil && accumulator != nil {
@@ -117,12 +124,6 @@ struct MyCalculatorBrain {
     mutating func setOperand(_ operand: Double) {
         accumulator = operand
         description += String(describing: accumulator!)
-        //if resultIsPending {
-        //    description = description.replacingOccurrences(of: "...", with: String(describing: accumulator!))
-        //}
-        //else {
-        //    description += String(accumulator!)
-        //}
     }
     
     var result: Double? {
