@@ -50,8 +50,8 @@ class ViewController: UIViewController {
         }
         
        
-        
-        if !brain.calcIsPending && (descriptionDisplay.text != String(describing: brain.result)){
+ // for Q7.j
+        if !brain.calcIsPending && brain.result != nil && (descriptionDisplay.text != String(describing: brain.result)) {
             
         } else {
             
