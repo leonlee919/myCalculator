@@ -72,20 +72,15 @@ struct MyCalculatorBrain {
                 }
             case .binaryOperation(let function):
                 if accumulator != nil {
+                    description += symbol
                     if !resultIsPending {
-                    
-                        description += symbol
                         pendingBinaryOperation = PendingBinaryOperation(function: function, firstOperand:accumulator!)
-                        accumulator = nil
                         resultIsPending = true
-                        
                     } else {
-                        description += symbol
                         performPendingBinaryOperation()
                         pendingBinaryOperation = PendingBinaryOperation(function: function, firstOperand:accumulator!)
-                        accumulator = nil
-                        
                     }
+                    accumulator = nil
                 }
             case .equals:
                 
