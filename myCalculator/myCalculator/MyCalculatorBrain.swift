@@ -112,7 +112,20 @@ struct MyCalculatorBrain {
 
     mutating func setOperand(_ operand: Double) {
         accumulator = operand
-        description += String(describing: accumulator!)
+        /* 
+         if resultIsPending {
+            description += String(describing: accumulator!)
+        } else {
+            if description == " " {
+                description = String(describing: accumulator!)
+            }
+    
+        }
+        */
+        description = resultIsPending ? description + String(describing: accumulator!) : String(describing: accumulator!)
+
+    
+        
     }
     
     var result: Double? {

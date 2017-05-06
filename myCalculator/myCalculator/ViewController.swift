@@ -49,7 +49,7 @@ class ViewController: UIViewController {
             
             userIsInTheMiddleOfTyping = true
         }
-        if !brain.calcIsPending {
+        if !brain.calcIsPending && (descriptionDisplay.text == " ") {
             descriptionDisplay.text = display.text
             
         }
