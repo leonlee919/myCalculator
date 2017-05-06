@@ -46,12 +46,20 @@ class ViewController: UIViewController {
                 userEnteredAPoint = true
             }
             
-            
             userIsInTheMiddleOfTyping = true
         }
-        if !brain.calcIsPending && (descriptionDisplay.text == " ") {
-            descriptionDisplay.text = display.text
+        
+       
+        
+        if !brain.calcIsPending && (descriptionDisplay.text != String(describing: brain.result)){
             
+        } else {
+            
+            if (!brain.calcIsPending && (brain.result == nil)) {
+                descriptionDisplay.text = display.text
+            } else {
+                
+            }
         }
     }
     
@@ -86,7 +94,12 @@ class ViewController: UIViewController {
             displayValue = result
             descriptionDisplay.text = brain.calcIsPending ? brain.descriptionText + "..." : brain.descriptionText + "="
         } else {
-            descriptionDisplay.text = brain.descriptionText + "..."
+            if brain.calcIsPending {
+                descriptionDisplay.text = brain.descriptionText + "..."
+            } else {
+                descriptionDisplay.text = " "
+                displayValue = 0
+            }
         }
         
     }

@@ -47,11 +47,19 @@ struct MyCalculatorBrain {
         if let operation = operations[symbol] {
             switch operation {
             case .constant(let value):
-                accumulator = value
                 if symbol == "C" {
                     description = " "
+                    resultIsPending = false
+                    accumulator = nil
+                    pendingBinaryOperation = nil
+                    
                 } else {
-                    description = symbol
+                    accumulator = value
+                    if resultIsPending {
+                        description += symbol
+                    } else {
+                        description = symbol
+                    }
                 }
             case .unaryOperation(let function):
                 if accumulator != nil {
@@ -112,7 +120,7 @@ struct MyCalculatorBrain {
 
     mutating func setOperand(_ operand: Double) {
         accumulator = operand
-        /* 
+        /*
          if resultIsPending {
             description += String(describing: accumulator!)
         } else {
@@ -122,7 +130,9 @@ struct MyCalculatorBrain {
     
         }
         */
+        
         description = resultIsPending ? description + String(describing: accumulator!) : String(describing: accumulator!)
+        
 
     
         
