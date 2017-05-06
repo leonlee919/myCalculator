@@ -62,7 +62,6 @@ struct MyCalculatorBrain {
                         
                         if !resultIsPending {
                             description = symbol + "(" + description + ")"
-                            
                         }
                         else {
                             description = description.replacingOccurrences(of: String(describing: accumulator!), with: symbol + String(describing: accumulator!))
@@ -83,7 +82,6 @@ struct MyCalculatorBrain {
                     accumulator = nil
                 }
             case .equals:
-                
                 performPendingBinaryOperation()
                 resultIsPending = false
                 

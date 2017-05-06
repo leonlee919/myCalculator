@@ -76,7 +76,6 @@ class ViewController: UIViewController {
         
         if userIsInTheMiddleOfTyping {
             brain.setOperand(displayValue)
-            
         }
         userIsInTheMiddleOfTyping = false
         userEnteredAPoint = false
@@ -85,13 +84,10 @@ class ViewController: UIViewController {
         }
         if let result = brain.result {
             displayValue = result
-           
-            descriptionDisplay.text = brain.descriptionText + "="
+            descriptionDisplay.text = brain.calcIsPending ? brain.descriptionText + "..." : brain.descriptionText + "="
         } else {
             descriptionDisplay.text = brain.descriptionText + "..."
         }
-        
-      
         
     }
     
